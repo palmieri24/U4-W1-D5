@@ -72,30 +72,29 @@ public class Main {
                         System.out.println("Valore inserito non valido");
                         i--;
                         break;
-
-
                 }
+        }
+        while (true) {
+            System.out.println("Quale elemento vuoi riprodurre? (scegli da 1 a 3, 0 per uscire)");
+            int elementoScelto = scanner.nextInt();
+            scanner.nextLine();
 
-            while (true) {
-                System.out.println("Quale elemento vuoi riprodurre? (scegli da 1 a 3, 0 per uscire)");
-                int elementoScelto = scanner.nextInt();
-                scanner.nextLine();
+            if (elementoScelto == 0) {
+                System.out.println("Exit");
+                scanner.close();
+                break;
+            } else if (elementoScelto >= 1 && elementoScelto <= 3) {
+                if (elementoMultimediale[elementoScelto - 1] instanceof Audio) {
+                    ((Audio) elementoMultimediale[elementoScelto - 1]).play();
 
-                if (elementoScelto == 0) {
-                    System.out.println("Exit");
-                    scanner.close();
-                    break;
-                } else if (elementoScelto >= 1 && elementoScelto <= 3) {
-                    if (elementoMultimediale[elementoScelto - 1] instanceof Audio) {
-                        ((Audio) elementoMultimediale[elementoScelto - 1]).play();
-                    } else if (elementoMultimediale[elementoScelto - 1] instanceof Video) {
-                        ((Video) elementoMultimediale[elementoScelto - 1]).play();
-                    } else if (elementoMultimediale[elementoScelto - 1] instanceof Image) {
-                        ((Image) elementoMultimediale[elementoScelto - 1]).show();
-                    }
-                } else {
-                    System.out.println("Scelta non valida. Riprova.");
+                } else if (elementoMultimediale[elementoScelto - 1] instanceof Video) {
+                    ((Video) elementoMultimediale[elementoScelto - 1]).play();
+
+                } else if (elementoMultimediale[elementoScelto - 1] instanceof Image) {
+                    ((Image) elementoMultimediale[elementoScelto - 1]).show();
                 }
+            } else {
+                System.out.println("Scelta non valida. Riprova.");
             }
         }
         }
